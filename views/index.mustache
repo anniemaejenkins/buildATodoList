@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>
+    </title>
+  </head>
+  <body>
+
+
+    <form class="" action="/" method="post">
+      <input type="text" name="todoInput" value="">
+      <button type="submit" name="button">Add todo</button>
+      <br>
+      <br>
+      <label for="todo_list">List</label>
+    </form>
+
+    {{!the action is going back into app.js to look for an id in the context variable }}
+    {{#model}}
+    {{^completed}}
+      <form class="" action="/complete/{{id}}" method="post">
+        <ul>
+          <li>
+            <input type="hidden" name="todo_id" value="{{id}}">
+            <span>{{name}}</span>
+            <input type="submit" name="" value="Done">
+          </li>
+        </ul>
+      </form>
+      {{/completed}}
+    {{/model}}
+
+    <h2>Completed Todo</h2>
+      {{#model}}
+      {{#completed}}
+        <form class="" action="index.html" method="post">
+          <ul>
+            <li>
+
+              <span><strike>{{name}}</strike></span>
+
+            </li>
+          </ul>
+        </form>
+      {{/completed}}
+      {{/model}}
+
+  </body>
+</html>
