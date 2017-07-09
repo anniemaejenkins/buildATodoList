@@ -28,18 +28,22 @@
           </li>
         </ul>
       </form>
+      <!-- <form class="" action="/complete/{{id}}" method="post">
+        <input type="text" name="" value="change task">
+        <input type="submit" name="" value="Update">
+      </form> -->
       {{/completed}}
     {{/model}}
 
     <h2>Completed Todo</h2>
       {{#model}}
       {{#completed}}
-        <form class="" action="index.html" method="post">
+        <form class="" action="/complete/{{id}}/delete" method="post">
           <ul>
             <li>
-
+              <input type="hidden" name="todo_id" value="{{id}}">
               <span><strike>{{name}}</strike></span>
-
+              <input type="submit" name="" value="Delete">
             </li>
           </ul>
         </form>

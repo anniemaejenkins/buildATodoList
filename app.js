@@ -26,7 +26,6 @@
 
   app.post('/', function(req, res){
     var name = req.body.todoInput;
-
     models.TodoList.create({
       name: name
       , completed: false
@@ -43,6 +42,28 @@
       res.redirect('/');
     });
   });
+
+  //delete function
+  app.post('/complete/:id/delete', function(req, res){
+    models.TodoList.findById(req.params.id).then(function(todo){
+      if (todo) {
+        todo.destroy().then(function () {
+          res.redirect('/');
+        });
+      } else {
+        res.status(404).send('Not found');
+      }
+    });
+  });
+
+  //edit function
+
+//   app.post('/complete/:id', function (req, res) {
+//     models.TodoList.findById(req.params.id).then(function (todo) {
+//       res.render('update', {model: todo});
+//   });
+// });
+
   // let todoList = 0;
   // let completedTodos = 0;
  //
@@ -60,43 +81,6 @@
  //   console.log(todoList.details);
  // });
 
-
-
-  // var context = {
-  //   todoList:["make todoList"],
-  //   todoId: function(){
-  //     return todoList++;
-  //   }
-  //   , completed: ["completed"],
-  //   completedId: function(){
-  //     return completedTodos++;
-  //   }
-  // };
-
-
-
-
-
-
-  // app.post('/', function(req, res){
-  //   var todo = context.todoList;
-  //   todo.push(req.body.todoInput);
-  //   res.redirect('/');
-  // });
-
-// /todo/{{id}}/complete/
-  // app.post('/todo/:id/complete/', function(req, res){
-  //   var index = req.params.id;
-  //   var todoRemove = context.todoList.splice(id, 1);
-  //   context.completedTodos.push(todoRemove);
-
-    // remove that index from the todo list
-
-    // add that index to the completed list
-
-  //   res.redirect('/');
-  // });
-  //
   app.listen(3000);
   //   console.log("stuff");
   // });
