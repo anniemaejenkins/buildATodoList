@@ -18,37 +18,43 @@
 
     {{!the action is going back into app.js to look for an id in the context variable }}
     {{#model}}
-    {{^completed}}
-      <form class="" action="/complete/{{id}}" method="post">
-        <ul>
-          <li>
-            <input type="hidden" name="todo_id" value="{{id}}">
-            <span>{{name}}</span>
-            <input type="submit" name="" value="Done">
-          </li>
-        </ul>
-      </form>
-      <!-- <form class="" action="/complete/{{id}}" method="post">
-        <input type="text" name="" value="change task">
-        <input type="submit" name="" value="Update">
-      </form> -->
+      {{^completed}}
+        <form class="" action="/complete/{{id}}" method="post">
+          <ul>
+            <li>
+              <input type="hidden" name="todo_id" value="{{id}}">
+              <span>{{name}}</span>
+              <input type="submit" name="" value="Done">
+            </li>
+          </ul>
+        </form>
+        <!-- <form class="" action="/complete/{{id}}/update" method="post">
+          <input type="hidden" name="id" value="{{id}}">
+          <span>{{name}}</span>
+          <input type="text" name="" value="">
+          <input type="submit" name="" value="Update">
+        </form> -->
       {{/completed}}
     {{/model}}
 
     <h2>Completed Todo</h2>
       {{#model}}
-      {{#completed}}
-        <form class="" action="/complete/{{id}}/delete" method="post">
-          <ul>
-            <li>
-              <input type="hidden" name="todo_id" value="{{id}}">
-              <span><strike>{{name}}</strike></span>
-              <input type="submit" name="" value="Delete">
-            </li>
-          </ul>
-        </form>
-      {{/completed}}
+        {{#completed}}
+          <form class="" action="/complete/{{id}}/delete" method="post">
+            <ul>
+              <li>
+                <input type="hidden" name="todo_id" value="{{id}}">
+                <span><strike>{{name}}</strike></span>
+                <input type="submit" name="" value="Delete">
+              </li>
+            </ul>
+          </form>
+        {{/completed}}
       {{/model}}
+
+
+
+
 
   </body>
 </html>

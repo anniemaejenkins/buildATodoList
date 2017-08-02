@@ -56,13 +56,9 @@
     });
   });
 
-  //edit function
 
-//   app.post('/complete/:id', function (req, res) {
-//     models.TodoList.findById(req.params.id).then(function (todo) {
-//       res.render('update', {model: todo});
-//   });
-// });
+
+  // edit function*****
 
   // let todoList = 0;
   // let completedTodos = 0;
@@ -82,6 +78,5 @@
  // });
 
   app.listen(3000);
-  //   console.log("stuff");
-  // });
+
 })();
