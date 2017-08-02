@@ -9,6 +9,12 @@
     <h1>Need to change your todo?</h1>
 
     {{#model}}
+      {{^completed}}
+        <form class="" action="/edit/{{id}}" method="post">
+          <input type="text" name="name" value="{{name}}">
+          <input type="submit" name="" value="Update">
+        </form>
+      {{/completed}}
     {{/model}}
 
   </body>
