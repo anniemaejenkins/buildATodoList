@@ -56,9 +56,30 @@
     });
   });
 
+  app.post('/detail/:id', function(req, res){
+    var id = req.params.id;
+    models.TodoList.findOne(
+      {where: {id: id}}
+    ).then(function(todo){
+      res.render('detail', {model: todo});
+    })
+  })
+
 
 
   // edit function*****
+
+  app.post('/edit/:id', function(req, res){
+    var id = req.params.id;
+    models.TodoList.findOne(
+       {where: {id: id}}
+    ).then(function (todo) {
+      todo.name = req.body.editName;
+      todo.save();
+    }).then(function(){
+      res.redirect('/');
+    });
+  });
 
   // let todoList = 0;
   // let completedTodos = 0;
